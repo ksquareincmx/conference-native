@@ -6,15 +6,25 @@ const imageSize = 20;
 const imageUri = require("../../images/image_placeholder_png.png");
 
 const RowSetup = props => {
+  const { imageUrl, title, text } = props;
   return (
     <TouchableOpacity style={styles.mainContainer}>
-      <View style={styles.imageTitleContainer}>
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={imageUri} />
+      <View style={styles.container}>
+        <View style={styles.imageTitleContainer}>
+          <View style={styles.imageContainer}>
+            <Image
+              style={styles.image}
+              source={imageUrl ? imageUrl : imageUri}
+            />
+          </View>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{title ? title : "Title"}</Text>
+          </View>
         </View>
-        <Text style={styles.title}>Date</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>{text ? text : "Info Text"}</Text>
+        </View>
       </View>
-      <Text style={styles.text}>Abril 20</Text>
     </TouchableOpacity>
   );
 };
@@ -22,30 +32,42 @@ const RowSetup = props => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around"
+    padding: 8,
+    flexDirection: "row"
+  },
+  container: {
+    flex: 1,
+    flexDirection: "row"
   },
   image: {
     width: imageSize,
     height: imageSize
   },
   imageContainer: {
-    flex: 2,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  titleContainer: {
+    flex: 5,
     justifyContent: "center"
   },
   imageTitleContainer: {
-    flex: 8,
+    flex: 7,
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    alignItems: "center"
   },
-  title: {
-      flex: 8,
-      justifyContent: "center",
-      alignItems: "center"
-  },
-  text: {
-    flex: 8,
+  textContainer: {
+    flex: 3,
+    flexDirection: "column",
+    alignItems: "center",
     justifyContent: "center"
+  },
+  title: {},
+  text: {
+    
+    textAlign: "center"
   }
 });
 

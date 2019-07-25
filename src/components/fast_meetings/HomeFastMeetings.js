@@ -2,8 +2,7 @@
 import React, { Component } from "react";
 import { View, Text, FlatList, Dimensions, StyleSheet } from "react-native";
 import RoomCell from "./RoomCell";
-import { CRHeader } from "../common";
-import Colors from '../../utils/Colors'
+import { CRHeader } from "src/components/common";
 
 const cellWidth = Dimensions.get("window").width;
 const data = [{ id: "0", title: "hola" }, { id: "1", title: "Hola" }, { id: "2", title: "Hola" }, { id: "3", title: "Hola" }];

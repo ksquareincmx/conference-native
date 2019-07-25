@@ -8,8 +8,8 @@ import {
   StyleSheet,
   SafeAreaView
 } from "react-native";
-import HeaderSetupMeeting from "../setup_meetings/HeaderSetupMeeting";
-import RowSetup from "./RowSetup";
+import HeaderSetupMeeting from "src/components/setup_meetings/HeaderSetupMeeting";
+import RowSetup from "src/components/setup_meetings/RowSetup";
 
 class RoomSetupMeeting extends Component {
   render() {

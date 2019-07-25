@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 
 const imageSize = 20;
-const imageUri = require("../../images/image_placeholder_png.png");
+const imageUri = require("src/images/image_placeholder_png.png");
 
 const RowSetup = props => {
   const { imageUrl, title, text } = props;

@@ -9,7 +9,7 @@ const LoginButton = props => {
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={require("../../images/LetterIcon.png")}
+            source={require("src/images/LetterIcon.png")}
           />
         </View>
         <Text style={styles.textStyle}>{props.children}</Text>

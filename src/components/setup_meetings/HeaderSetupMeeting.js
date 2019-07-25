@@ -8,8 +8,8 @@ import {
   StyleSheet,
   Image
 } from "react-native";
-import { CRButton } from "../common"
-const imageSource = require("../../images/image_placeholder_png.png");
+import { CRButton } from "src/components/common"
+const imageSource = require("src/images/image_placeholder_png.png");
 
 const imageSize = 50;
 

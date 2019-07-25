@@ -1,7 +1,7 @@
 "use-strict";
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { Card } from "../common";
+import { Card } from "src/components/common";
 
 const dotSize = 12
 

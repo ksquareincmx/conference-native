@@ -19,21 +19,11 @@ class RoomSetupMeeting extends Component {
           <HeaderSetupMeeting />
         </View>
         <View style={styles.rowsContainer}>
-          <View style={styles.row}>
-            <RowSetup />
-          </View>
-          <View style={styles.row}>
-            <RowSetup />
-          </View>
-          <View style={styles.row}>
-            <RowSetup />
-          </View>
-          <View style={styles.row}>
-            <RowSetup />
-          </View>
-          <View style={styles.row}>
-            <RowSetup />
-          </View>
+          <RowSetup />
+          <RowSetup />
+          <RowSetup />
+          <RowSetup />
+          <RowSetup />
         </View>
         <View style={styles.extraContainer} />
       </SafeAreaView>
@@ -42,9 +32,6 @@ class RoomSetupMeeting extends Component {
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flex: 1
-  },
   headerContainer: {
     flex: 1
   },

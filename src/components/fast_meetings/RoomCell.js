@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Card } from "src/components/common";
 
-const dotSize = 12
+const dotSize = 12;
+const imageRoute = require("src/images/image_placeholder_png.png")
 
 class RoomCell extends Component {
   render() {
@@ -22,7 +23,7 @@ class RoomCell extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.rightView}>
-            <Image style={styles.image} source={require('../../images/image_placeholder_png.png')} />
+            <Image style={styles.image} source={imageRoute} />
           </View>
         </View>
       </Card>

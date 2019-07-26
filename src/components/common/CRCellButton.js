@@ -4,11 +4,13 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 class CRCellButton extends Component {
   render() {
-    <View style={styles.mainContainer}>
-      <TouchableOpacity>
+    return (
+      <View style={styles.mainContainer}>
+        <TouchableOpacity>
           <Text>Accept</Text>
-      </TouchableOpacity>
-    </View>;
+        </TouchableOpacity>
+      </View>
+    );
   }
 }
 
@@ -16,7 +18,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1
   }
-})
-
+});
 
 export { CRCellButton };

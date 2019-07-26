@@ -1,7 +1,7 @@
 "use-strict";
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { Card } from "src/components/common";
+import { Card, CRCellButton } from "src/components/common";
 
 const imageRoute = require("src/images/image_placeholder_png.png");
 
@@ -19,12 +19,8 @@ class MeetingCell extends Component {
               </Text>
             </View>
             <View style={styles.buttonsContainer}>
-              <TouchableOpacity onPress={this.props.onPress}>
-                <Text style={styles.appointButton}>Accept</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={this.props.onPress}>
-                <Text style={styles.appointButton}>Cancel</Text>
-              </TouchableOpacity>
+              <CRCellButton />
+              <CRCellButton />
             </View>
           </View>
           <View style={styles.rightView}>

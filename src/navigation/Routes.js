@@ -31,9 +31,18 @@ const FastMeetingsStack = createStackNavigator(
 const CalendarStack = createStackNavigator({
   Home: HomeCalendar
 });
-const MeetingsStack = createStackNavigator({
-  Home: HomeMyMeetings
-});
+const MeetingsStack = createStackNavigator(
+  {
+    Home: HomeMyMeetings
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#DC3343"
+      }
+    }
+  }
+);
 const MainTab = createBottomTabNavigator(
   {
     FastMeeting: FastMeetingsStack,

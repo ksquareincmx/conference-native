@@ -11,7 +11,7 @@ class HomeMyMeetings extends Component {
   render() {
     return (
       <View style={styles.main}>
-        <CRHeader />
+        <CRHeader leftText="Profile" />
         <FlatList
           data={data}
           renderItem={this.renderItem}

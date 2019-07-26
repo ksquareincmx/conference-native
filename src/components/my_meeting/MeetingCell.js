@@ -19,8 +19,12 @@ class MeetingCell extends Component {
               </Text>
             </View>
             <View style={styles.buttonsContainer}>
-              <CRCellButton />
-              <CRCellButton />
+              <View style={styles.buttonLeftView}>
+                <CRCellButton />
+              </View>
+              <View style={styles.buttonRightView}>
+                <CRCellButton />
+              </View>
             </View>
           </View>
           <View style={styles.rightView}>
@@ -48,7 +52,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flex: 3,
     justifyContent: "space-around",
-    alignItems: "center"
+    padding: 10
+  },
+  buttonLeftView: {
+    flex: 1,
+    padding: 8
+  },
+  buttonRightView: {
+    flex: 1,
+    padding: 8
   },
   image: {
     width: 70,

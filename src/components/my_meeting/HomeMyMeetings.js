@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { View, StyleSheet, FlatList, Dimensions } from "react-native";
 import { CRHeader } from "src/components/common"
+import MeetingCell from "src/components/my_meeting/MeetingCell"
 
 const cellWidth = Dimensions.get("window").width;
 const data = [{ id: "0", title: "hola" }, { id: "1", title: "Hola" }, { id: "2", title: "Hola" }, { id: "3", title: "Hola" }];
@@ -9,7 +10,7 @@ const data = [{ id: "0", title: "hola" }, { id: "1", title: "Hola" }, { id: "2",
 class HomeMyMeetings extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.main}>
         <CRHeader />
         <FlatList
           data={data}
@@ -22,7 +23,7 @@ class HomeMyMeetings extends Component {
 
   renderItem = ({ item }) => (
     <View style={{ width: cellWidth, height: cellWidth * 0.5, padding: 5 }}>
-      <RoomCell onPress={this.onPressAppoint} text={item.title} />
+      <MeetingCell onPress={this.onPressAppoint} text={item.title} />
     </View>
   );
 }

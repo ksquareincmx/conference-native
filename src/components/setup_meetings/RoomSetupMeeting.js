@@ -1,40 +1,46 @@
 "use-strict";
 import React, { Component } from "react";
-import { View, Text, FlatList, Dimensions, StyleSheet, SafeAreaView } from "react-native";
-import HeaderSetupMeeting from "../setup_meetings/HeaderSetupMeeting"
-
+import {
+  View,
+  Text,
+  FlatList,
+  Dimensions,
+  StyleSheet,
+  SafeAreaView
+} from "react-native";
+import HeaderSetupMeeting from "src/components/setup_meetings/HeaderSetupMeeting";
+import RowSetup from "src/components/setup_meetings/RowSetup";
 
 class RoomSetupMeeting extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
+        <View style={styles.headerContainer}>
           <HeaderSetupMeeting />
         </View>
-        <View style={styles.row}>
-          <Text>Date</Text>
+        <View style={styles.rowsContainer}>
+          <RowSetup />
+          <RowSetup />
+          <RowSetup />
+          <RowSetup />
+          <RowSetup />
         </View>
-        <View style={styles.row}>
-          <Text>Time</Text>
-        </View>
-        <View style={styles.row}>
-          <Text>Recurrency</Text>
-        </View>
-        <View style={styles.row}>
-          <Text>Add people</Text>
-        </View>
-        <View style={styles.row}>
-          <Text>add description</Text>
-        </View>
+        <View style={styles.extraContainer} />
       </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flex: 2
+  headerContainer: {
+    flex: 1
+  },
+  rowsContainer: {
+    flex: 5
+  },
+  extraContainer: {
+    flex: 4
   }
-})
+});
 
 export default RoomSetupMeeting;

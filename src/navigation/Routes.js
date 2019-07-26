@@ -5,14 +5,12 @@ import {
   createAppContainer,
   createBottomTabNavigator
 } from "react-navigation";
-import Login from "../components/login/Login";
-import HomeFastMeetings from "../components/fast_meetings/HomeFastMeetings";
-import RoomSetupMeeting from "../components/setup_meetings/RoomSetupMeeting"
-import HomeMyMeetings from "../components/my_meeting/HomeMyMeetings";
-import HomeCalendar from "../components/calendar/HomeCalendar";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import Colors from '../utils/Colors'
+import Login from "src/components/login/Login";
+import HomeFastMeetings from "src/components/fast_meetings/HomeFastMeetings";
+import RoomSetupMeeting from "src/components/setup_meetings/RoomSetupMeeting"
+import HomeMyMeetings from "src/components/my_meeting/HomeMyMeetings";
+import HomeCalendar from "src/components/calendar/HomeCalendar";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const AuthStack = createStackNavigator({
   SignIn: Login

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Card, CardSection, Button } from "../common";
-import LoginButton from './LoginButton'
+import LoginButton from 'src/components/login/LoginButton'
 const imageSize = 100
 
 class Login extends Component {

@@ -1,8 +1,7 @@
-"use-strict";
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-class CRCellButton extends Component {
+class CRButtonWithDisableState extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -31,4 +30,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export { CRCellButton };
+export { CRButtonWithDisableState };

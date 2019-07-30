@@ -5,8 +5,12 @@ import { StyleSheet, Text, View } from "react-native";
 const CRHeader = props => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Conference Status</Text>
-      <Text style={styles.text}>10:30pm</Text>
+      <Text style={styles.text}>
+        {props.leftText ? props.leftText : "Conference Status"}
+      </Text>
+      <Text style={styles.text}>
+        {props.rightText ? props.rightText : "10:00pm"}
+      </Text>
     </View>
   );
 };

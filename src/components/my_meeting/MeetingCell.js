@@ -1,40 +1,38 @@
 "use-strict";
-import React, { Component } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Card, CRButtonWithDisableState } from "src/components/common";
 
 const imageRoute = require("src/images/image_placeholder_png.png");
 
-class MeetingCell extends Component {
-  render() {
-    return (
-      <Card>
-        <View style={styles.container}>
-          <View style={styles.leftView}>
-            <View style={styles.textsContainer}>
-              <Text style={styles.meetingNameText}>LMS Demo</Text>
-              <Text style={styles.infoText}>
-                Next Meeting 4:30pm to 5pm Next Meeting 4:30pm to 5pm Next
-                Meeting 4:30pm to 5pm
-              </Text>
-            </View>
-            <View style={styles.buttonsContainer}>
-              <View style={styles.buttonLeftView}>
-                <CRButtonWithDisableState />
-              </View>
-              <View style={styles.buttonRightView}>
-                <CRButtonWithDisableState />
-              </View>
-            </View>
+const MeetingCell = props => {
+  return (
+    <Card>
+      <View style={styles.container}>
+        <View style={styles.leftView}>
+          <View style={styles.textsContainer}>
+            <Text style={styles.meetingNameText}>LMS Demo</Text>
+            <Text style={styles.infoText}>
+              Next Meeting 4:30pm to 5pm Next Meeting 4:30pm to 5pm Next Meeting
+              4:30pm to 5pm
+            </Text>
           </View>
-          <View style={styles.rightView}>
-            <Image style={styles.image} source={imageRoute} />
+          <View style={styles.buttonsContainer}>
+            <View style={styles.buttonLeftView}>
+              <CRButtonWithDisableState />
+            </View>
+            <View style={styles.buttonRightView}>
+              <CRButtonWithDisableState />
+            </View>
           </View>
         </View>
-      </Card>
-    );
-  }
-}
+        <View style={styles.rightView}>
+          <Image style={styles.image} source={imageRoute} />
+        </View>
+      </View>
+    </Card>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

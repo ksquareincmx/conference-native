@@ -1,17 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-class CRButtonWithDisableState extends Component {
-  render() {
-    return (
-      <View style={styles.mainContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.text}>Accept</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+const CRButtonWithDisableState = props => {
+  return (
+    <View style={styles.mainContainer}>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.text}>Accept</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   mainContainer: {

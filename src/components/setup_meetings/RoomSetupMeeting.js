@@ -11,7 +11,7 @@ import {
 import DateTimePicker from "react-native-modal-datetime-picker";
 import HeaderSetupMeeting from "src/components/setup_meetings/HeaderSetupMeeting";
 import RowSetup from "src/components/setup_meetings/RowSetup";
-import moment from "moment"
+import moment from "moment";
 
 class RoomSetupMeeting extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class RoomSetupMeeting extends Component {
     this.state = {
       isDatePickerVisible: false,
       isTimePickerVisible: false,
+      timePickerSelected: "start",
       pickedDate: Date(),
       startTime: Date(),
       endTime: Date()
@@ -32,33 +33,33 @@ class RoomSetupMeeting extends Component {
           <HeaderSetupMeeting />
         </View>
         <View style={styles.rowsContainer}>
-          <RowSetup 
-            onPress={this.showDatePicker} 
+          <RowSetup
+            onPress={this.showDatePicker}
             title="Date"
             text={moment(this.state.pickedDate).format("MMM Do")}
           />
-          <RowSetup 
-            onPress={this.showTimePicker}
+          <RowSetup
+            onPress={() => this.showTimePicker("start")}
             title="Start time"
-            text={moment(this.state.startTime).format('LT')}
+            text={moment(this.state.startTime).format("LT")}
           />
-          <RowSetup 
-            onPress={this.showTimePicker}
+          <RowSetup
+            onPress={() => this.showTimePicker("end")}
             title="End time"
-            text={moment(this.state.endTime).format('LT')}
+            text={moment(this.state.endTime).format("LT")}
           />
           <RowSetup onPress={this.showDatePicker} />
           <RowSetup onPress={this.showDatePicker} />
         </View>
         <View style={styles.extraContainer} />
-        <DateTimePicker 
+        <DateTimePicker
           isVisible={this.state.isDatePickerVisible}
           onConfirm={this.handleDatePicked}
           onCancel={this.hideDatePicker}
         />
-        <DateTimePicker 
+        <DateTimePicker
           isVisible={this.state.isTimePickerVisible}
-          onConfirm={this.handleStartTimePicked}
+          onConfirm={this.handleTimePicked}
           onCancel={this.hideTimePicker}
           mode="time"
         />
@@ -67,30 +68,36 @@ class RoomSetupMeeting extends Component {
   }
 
   handleDatePicked = date => {
-    console.log("A date has been picked: ", moment(date).format('MMM Do'))
-    this.setState({ pickedDate: date })
-    this.hideDatePicker()
+    console.log("A date has been picked: ", moment(date).format("MMM Do"));
+    this.setState({ pickedDate: date });
+    this.hideDatePicker();
   };
 
-  handleStartTimePicked = time => {
-    this.setState({ startTime: time })
-    this.hideTimePicker()
-  }
+  handleTimePicked = time => {
+    const { timePickerSelected } = this.state;
+    if (timePickerSelected === "start") {
+      this.setState({ startTime: time });
+    } else if (timePickerSelected === "end") {
+      this.setState({ endTime: time });
+    }
+
+    this.hideTimePicker();
+  };
 
   hideDatePicker = () => {
-    this.setState({ isDatePickerVisible: false })
+    this.setState({ isDatePickerVisible: false });
   };
 
   hideTimePicker = () => {
-    this.setState({ isTimePickerVisible: false })
-  }
+    this.setState({ isTimePickerVisible: false });
+  };
 
   showDatePicker = () => {
-    this.setState({ isDatePickerVisible: true })
+    this.setState({ isDatePickerVisible: true });
   };
-  showTimePicker = () => {
-    this.setState({ isTimePickerVisible: true })
-  }
+  showTimePicker = comesFrom => {
+    this.setState({ isTimePickerVisible: true, timePickerSelected: comesFrom });
+  };
 }
 
 const styles = StyleSheet.create({

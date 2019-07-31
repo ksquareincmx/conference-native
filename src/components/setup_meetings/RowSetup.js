@@ -6,9 +6,9 @@ const imageSize = 20;
 const imageUri = require("src/images/image_placeholder_png.png");
 
 const RowSetup = props => {
-  const { imageUrl, title, text } = props;
+  const { imageUrl, title, text, onPress } = props;
   return (
-    <TouchableOpacity style={styles.mainContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.mainContainer}>
       <View style={styles.container}>
         <View style={styles.imageTitleContainer}>
           <View style={styles.imageContainer}>

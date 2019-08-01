@@ -1,13 +1,6 @@
 "use-strict";
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  Dimensions,
-  StyleSheet,
-  SafeAreaView
-} from "react-native";
+import { View, Picker, StyleSheet, SafeAreaView } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import HeaderSetupMeeting from "src/components/setup_meetings/HeaderSetupMeeting";
 import RowSetup from "src/components/setup_meetings/RowSetup";
@@ -19,10 +12,12 @@ class RoomSetupMeeting extends Component {
     this.state = {
       isDatePickerVisible: false,
       isTimePickerVisible: false,
+      isRecurrencyPickerVisible: false,
       timePickerSelected: "start",
       pickedDate: Date(),
       startTime: Date(),
-      endTime: Date()
+      endTime: Date(),
+      recurrencySelected: "1"
     };
   }
 
@@ -48,10 +43,20 @@ class RoomSetupMeeting extends Component {
             title="End time"
             text={moment(this.state.endTime).format("LT")}
           />
-          <RowSetup onPress={this.showDatePicker} />
+          <RowSetup
+            title="Recurrency"
+            onPress={() => this.showRecurrencyPicker()}
+          />
           <RowSetup onPress={this.showDatePicker} />
         </View>
-        <View style={styles.extraContainer} />
+
+        <View style={styles.extraContainer}>
+          <RecurrencyPicker 
+            isVisible={this.state.isRecurrencyPickerVisible} 
+            selectedValue={this.state.recurrencySelected}
+            onValueChange={(value, index) => this.onRecurrencyChangedValue(value, index)}
+          />
+        </View>
         <DateTimePicker
           isVisible={this.state.isDatePickerVisible}
           onConfirm={this.handleDatePicked}
@@ -65,6 +70,11 @@ class RoomSetupMeeting extends Component {
         />
       </SafeAreaView>
     );
+  }
+
+  onRecurrencyChangedValue = (value, index) => {
+    console.log("Recurrency changed value: ", value)
+    this.setState({ recurrencySelected: value })
   }
 
   handleDatePicked = date => {
@@ -92,13 +102,37 @@ class RoomSetupMeeting extends Component {
     this.setState({ isTimePickerVisible: false });
   };
 
+  hideRecurrencyPicker = () => {
+    this.setState({ isRecurrencyPickerVisible: false });
+  };
   showDatePicker = () => {
     this.setState({ isDatePickerVisible: true });
   };
   showTimePicker = comesFrom => {
     this.setState({ isTimePickerVisible: true, timePickerSelected: comesFrom });
   };
+
+  showRecurrencyPicker = () => {
+    this.setState({ isRecurrencyPickerVisible: true });
+  };
 }
+
+const RecurrencyPicker = props => {
+  if (props.isVisible) {
+    return (
+      <View style={{ flex: 1 }}>
+        <Picker
+          selectedValue={props.selectedValue}
+          onValueChange={props.onValueChange}
+        >
+          <Picker.Item label="Does not repeat" value="1" />
+          <Picker.Item label="Every Day" value="2" />
+        </Picker>
+      </View>
+    );
+  }
+  return null;
+};
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -109,6 +143,10 @@ const styles = StyleSheet.create({
   },
   extraContainer: {
     flex: 4
+  },
+  pickerStyle: {
+    height: 100,
+    width: 140
   }
 });
 

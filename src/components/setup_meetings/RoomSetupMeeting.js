@@ -51,10 +51,12 @@ class RoomSetupMeeting extends Component {
         </View>
 
         <View style={styles.extraContainer}>
-          <RecurrencyPicker 
-            isVisible={this.state.isRecurrencyPickerVisible} 
+          <RecurrencyPicker
+            isVisible={this.state.isRecurrencyPickerVisible}
             selectedValue={this.state.recurrencySelected}
-            onValueChange={(value, index) => this.onRecurrencyChangedValue(value, index)}
+            onValueChange={(value, index) =>
+              this.onRecurrencyChangedValue(value, index)
+            }
           />
         </View>
         <DateTimePicker
@@ -73,9 +75,9 @@ class RoomSetupMeeting extends Component {
   }
 
   onRecurrencyChangedValue = (value, index) => {
-    console.log("Recurrency changed value: ", value)
-    this.setState({ recurrencySelected: value })
-  }
+    console.log("Recurrency changed value: ", value);
+    this.setState({ recurrencySelected: value });
+  };
 
   handleDatePicked = date => {
     console.log("A date has been picked: ", moment(date).format("MMM Do"));
@@ -124,6 +126,7 @@ const RecurrencyPicker = props => {
         <Picker
           selectedValue={props.selectedValue}
           onValueChange={props.onValueChange}
+          mode="dialog"
         >
           <Picker.Item label="Does not repeat" value="1" />
           <Picker.Item label="Every Day" value="2" />

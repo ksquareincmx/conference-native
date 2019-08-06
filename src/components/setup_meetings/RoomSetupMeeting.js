@@ -50,15 +50,7 @@ class RoomSetupMeeting extends Component {
           <RowSetup onPress={this.showDatePicker} />
         </View>
 
-        <View style={styles.extraContainer}>
-          <RecurrencyPicker
-            isVisible={this.state.isRecurrencyPickerVisible}
-            selectedValue={this.state.recurrencySelected}
-            onValueChange={(value, index) =>
-              this.onRecurrencyChangedValue(value, index)
-            }
-          />
-        </View>
+        <View style={styles.extraContainer} />
         <DateTimePicker
           isVisible={this.state.isDatePickerVisible}
           onConfirm={this.handleDatePicked}
@@ -115,7 +107,8 @@ class RoomSetupMeeting extends Component {
   };
 
   showRecurrencyPicker = () => {
-    this.setState({ isRecurrencyPickerVisible: true });
+    //this.setState({ isRecurrencyPickerVisible: true });
+    this.props.navigation.navigate('Modal')
   };
 }
 

@@ -6,6 +6,17 @@ import HeaderSetupMeeting from "src/components/setup_meetings/HeaderSetupMeeting
 import RowSetup from "src/components/setup_meetings/RowSetup";
 import moment from "moment";
 
+const recurrencyData = [
+  {
+    name: "Does not repeat",
+    value: "1"
+  },
+  {
+    name: "Every day",
+    value: "2"
+  }
+]
+
 class RoomSetupMeeting extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +28,7 @@ class RoomSetupMeeting extends Component {
       pickedDate: Date(),
       startTime: Date(),
       endTime: Date(),
-      recurrencySelected: "1"
+      recurrencySelected: recurrencyData[0]
     };
   }
 
@@ -46,8 +57,10 @@ class RoomSetupMeeting extends Component {
           <RowSetup
             title="Recurrency"
             onPress={() => this.showRecurrencyPicker()}
+            text={this.state.recurrencySelected.name}
           />
-          <RowSetup onPress={this.showDatePicker} />
+          <RowSetup title="Add People" onPress={this.showDatePicker} />
+          <RowSetup title="Add Description" onPress={this.showDatePicker} />
         </View>
 
         <View style={styles.extraContainer} />
@@ -107,28 +120,19 @@ class RoomSetupMeeting extends Component {
   };
 
   showRecurrencyPicker = () => {
-    //this.setState({ isRecurrencyPickerVisible: true });
-    this.props.navigation.navigate('Modal')
+    this.props.navigation.navigate('Modal', {
+      items: recurrencyData,
+      returnData: this.recurrencyPickerOnChangeValue.bind(this),
+      selectedItem: this.state.recurrencySelected
+    });
+  };
+
+  recurrencyPickerOnChangeValue = (value, index) => {
+    this.setState({
+      recurrencySelected: recurrencyData[index]
+    });
   };
 }
-
-const RecurrencyPicker = props => {
-  if (props.isVisible) {
-    return (
-      <View style={{ flex: 1 }}>
-        <Picker
-          selectedValue={props.selectedValue}
-          onValueChange={props.onValueChange}
-          mode="dialog"
-        >
-          <Picker.Item label="Does not repeat" value="1" />
-          <Picker.Item label="Every Day" value="2" />
-        </Picker>
-      </View>
-    );
-  }
-  return null;
-};
 
 const styles = StyleSheet.create({
   headerContainer: {

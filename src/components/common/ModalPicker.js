@@ -3,6 +3,17 @@ import { StyleSheet, View, Picker, TouchableOpacity, Text } from "react-native";
 import { CRButton } from "src/components/common";
 
 class ModalPicker extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: this.props.navigation.getParam("items", [
+        { text: "Does not repeat", value: "1" },
+        { text: "Every Day", value: "2" }
+      ]),
+      selectedItem: this.props.navigation.getParam("selectedItem", "1")
+    };
+  }
+
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -10,8 +21,8 @@ class ModalPicker extends Component {
           <View style={styles.pickerContainer}>
             <Picker
               style={styles.picker}
-              selectedValue="1"
-              onValueChange={this.props.onValueChange}
+              selectedValue={this.state.selectedItem}
+              onValueChange={(value, index) => this.onValueChange(value, index)}
               mode="dropdown"
               itemStyle={styles.pickerItem}
             >
@@ -20,7 +31,10 @@ class ModalPicker extends Component {
             </Picker>
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.goBack()}
+            >
               <Text style={styles.buttonText}>Choose</Text>
             </TouchableOpacity>
           </View>
@@ -28,6 +42,12 @@ class ModalPicker extends Component {
       </View>
     );
   }
+
+  onValueChange = (value, index) => {
+    this.setState({ selectedItem: value });
+    const returnData = this.props.navigation.state.params.returnData;
+    returnData(value, index);
+  };
 }
 
 const styles = StyleSheet.create({
@@ -35,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: '#6565677F',
+    backgroundColor: "#6565677F"
   },
   centerContainer: {
     flex: 0.2,

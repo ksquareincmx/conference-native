@@ -7,8 +7,8 @@ class ModalPicker extends Component {
     super(props);
     this.state = {
       items: this.props.navigation.getParam("items", [
-        { text: "Does not repeat", value: "1" },
-        { text: "Every Day", value: "2" }
+        { name: "Does not repeat", value: "1" },
+        { name: "Every Day", value: "2" }
       ]),
       selectedItem: this.props.navigation.getParam("selectedItem", "1")
     };
@@ -23,11 +23,12 @@ class ModalPicker extends Component {
               style={styles.picker}
               selectedValue={this.state.selectedItem}
               onValueChange={this.onValueChange}
-              mode="dropdown"
+              mode="dialog"
               itemStyle={styles.pickerItem}
             >
-              <Picker.Item label="Does not repeat" value="1" />
-              <Picker.Item label="Every Day" value="2" />
+              {this.state.items.map(item => {
+                return <Picker.Item label={item.name} value={item.value} />;
+              })}
             </Picker>
           </View>
           <View style={styles.buttonContainer}>

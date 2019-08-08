@@ -22,7 +22,7 @@ class ModalPicker extends Component {
             <Picker
               style={styles.picker}
               selectedValue={this.state.selectedItem}
-              onValueChange={(value, index) => this.onValueChange(value, index)}
+              onValueChange={this.onValueChange}
               mode="dropdown"
               itemStyle={styles.pickerItem}
             >
@@ -31,10 +31,7 @@ class ModalPicker extends Component {
             </Picker>
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.props.navigation.goBack()}
-            >
+            <TouchableOpacity style={styles.button} onPress={this.dismissModal}>
               <Text style={styles.buttonText}>Choose</Text>
             </TouchableOpacity>
           </View>
@@ -48,6 +45,8 @@ class ModalPicker extends Component {
     const returnData = this.props.navigation.state.params.returnData;
     returnData(value, index);
   };
+
+  dismissModal = () => this.props.navigation.goBack();
 }
 
 const styles = StyleSheet.create({

@@ -27,7 +27,13 @@ class ModalPicker extends Component {
               itemStyle={styles.pickerItem}
             >
               {this.state.items.map(item => {
-                return <Picker.Item label={item.name} value={item.value} />;
+                return (
+                  <Picker.Item
+                    key={item.value}
+                    label={item.name}
+                    value={item.value}
+                  />
+                );
               })}
             </Picker>
           </View>

@@ -11,6 +11,7 @@ import RoomSetupMeeting from "src/components/setup_meetings/RoomSetupMeeting"
 import HomeMyMeetings from "src/components/my_meeting/HomeMyMeetings";
 import HomeCalendar from "src/components/calendar/HomeCalendar";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import ModalPicker from "src/components/common/ModalPicker"
 
 const AuthStack = createStackNavigator({
   SignIn: Login
@@ -28,6 +29,18 @@ const FastMeetingsStack = createStackNavigator(
     }
   }
 );
+const FastMeetingModalStack = createStackNavigator(
+  {
+    Home: { screen: FastMeetingsStack },
+    Modal: { screen: ModalPicker }
+  },
+  {
+    mode: "modal",
+    headerMode: "none",
+    transparentCard: true
+  }
+)
+
 const CalendarStack = createStackNavigator({
   Home: HomeCalendar
 });
@@ -45,7 +58,7 @@ const MeetingsStack = createStackNavigator(
 );
 const MainTab = createBottomTabNavigator(
   {
-    FastMeeting: FastMeetingsStack,
+    FastMeeting: FastMeetingModalStack,
     MyMeetings: MeetingsStack,
     Calendar: CalendarStack
   },
